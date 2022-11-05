@@ -179,7 +179,7 @@ int ebitmap_netlbl_import(struct ebitmap *ebmap,
 		if (e_iter == NULL ||
 		    offset >= e_iter->startbit + EBITMAP_SIZE) {
 			e_prev = e_iter;
-			e_iter = try_alloc(ebmap->protectable);
+			e_iter = try_alloc(ebmap->protectable, GFP_ATOMIC);
 			if (e_iter == NULL)
 				goto netlbl_import_failure;
 			e_iter->startbit = offset - (offset % EBITMAP_SIZE);
